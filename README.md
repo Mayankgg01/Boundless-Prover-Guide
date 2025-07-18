@@ -248,19 +248,47 @@ source .env.base
 nano compose.yml
 ```
 
-* Now GO to `x-exec-agent-common: &exec-agent-common` section and change:
+1. Now GO to `x-exec-agent-common: &exec-agent-common` section and change:
 
-1. `mem_limit:`        How much Ram u want to allocate, dont allocate max:
+1.1. `mem_limit:`        How much Ram u want to allocate, dont allocate max:
 
-2. `cpus:`            Numbers of Core u want to allocation, u can allocate max if ur core are not doing big stuff: check core with `lscpu` 
+1.2. `cpus:`            Numbers of Core u want to allocation, u can allocate max if ur core are not doing big stuff: check core with `lscpu` 
 
 
-* Now scroll down and Go to ` gpu_prove_agent0:` & change `mem_limit:` & `cpus:`  Here too: (See SS)
+2. Now scroll down and Go to `gpu_prove_agent0:` & change `mem_limit:` & `cpus:`  Here too: (See ScreenShot)
 
 <img width="2892" height="820" alt="image" src="https://github.com/user-attachments/assets/ba890547-a294-405d-8638-4271151aa2c8" />
 
 
 
-## Configure Segment Size
+### 3. Configure Segment Size 
+
+>Here we will change the Segment Size into the `x-exec-agent-common: &exec-agent-common` ...Check the below given Screenshot and edit the `Segment Size` according to your `VRAM` 
+
+<img width="1132" height="336" alt="image" src="https://github.com/user-attachments/assets/8a25242c-8ae1-499a-a945-60fe2b94b3dd" />
+
+* Now we will add Segment Size in the `.env.broker` 
+
+* Firstly we will copy `.env.broker-template` into `.env.broker`
+
+```
+cp .env.broker-template .env.broker
+```
+
+* Open it and set `Segment Size` According to your `VRAM` : As same as above step:
+
+```
+nano .env.broker
+```
+
+* ####  Inject it into broker make changes:
+
+```
+source .env.broker
+```
+
+>You Have to inject everytime when you are going to run prover/broker
+
+---
 
 
