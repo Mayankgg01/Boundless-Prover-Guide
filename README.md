@@ -256,7 +256,7 @@ nano compose.yml
 
 1.1. `mem_limit:`        How much Ram u want to allocate, dont allocate max:
 
-1.2. `cpus:`            Numbers of Core u want to allocation, u can allocate max if ur core are not doing big stuff: check core with `lscpu` 
+1.2. `cpus:`            Numbers of Core u want to allocation, u can allocate max if ur core are not doing big stuff: [check core](https://github.com/Mayankgg01/Boundless-Prover-Guide?tab=readme-ov-file#check-number-of-cpu-cores-and-threads)
 
 
 2. Now scroll down and Go to `gpu_prove_agent0:` & change `mem_limit:` & `cpus:`  Here too: (See ScreenShot)
