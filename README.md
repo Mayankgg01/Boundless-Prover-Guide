@@ -567,4 +567,7 @@ docker ps
 just broker logs
 ```
 
+<img width="2227" height="1256" alt="image" src="https://github.com/user-attachments/assets/c821373d-aacf-473a-80e3-3dc644a4d7c7" />
+
+
 Here we go🚀......You just have completed the Boundless prover Set-Up: 🥳
