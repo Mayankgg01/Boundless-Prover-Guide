@@ -222,7 +222,7 @@ sudo rm $HOME/boundless/.env.base
 ```
 
 ```
-curl -o $HOME/boundless/.env.base https://github.com/Mayankgg01/Boundless-Prover-Guide/blob/main/.env.base
+curl -o $HOME/boundless/.env.base https://raw.githubusercontent.com/Mayankgg01/Boundless-Prover-Guide/refs/heads/main/.env.base
 ```
 
 ```
@@ -415,7 +415,7 @@ boundless proving benchmark --request-ids {Order_ID}
 
 ```
 cd boundless
-wget https://github.com/Mayankgg01/Boundless-Prover-Guide/blob/main/broker.toml -O broker.toml
+wget https://raw.githubusercontent.com/Mayankgg01/Boundless-Prover-Guide/refs/heads/main/broker.toml -O broker.toml
 ```
 
 2. Open `Broker.toml` 
