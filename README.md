@@ -60,7 +60,7 @@ lscpu
 ### Monitor Your GPU
 
 ```
-nvtop
+htop
 ```
 
 ### Operating System: 
@@ -86,7 +86,7 @@ nvtop
 
 >If u have Cloud GPU then follow: [Install Docker & Docker Compose](https://github.com/Mayankgg01/Aztec_Sequencer_Guide?tab=readme-ov-file#install-docker--docker-compose)
 
->#### Get Base Mainnet RPC Endpoint: [Alchemy](https://www.alchemy.com/) , 
+>#### Get Base Mainnet RPC Endpoint: [Alchemy](https://www.alchemy.com/) , The free one might work: U can make a try:
 
 
 ### Install All Require Dependecies
@@ -211,8 +211,6 @@ boundless -h
 #### Just
 
 ```
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-source $HOME/.cargo/env
 cargo install just
 just --version
 ```
@@ -523,3 +521,50 @@ nano broker.toml
 * Web to Calculate it: www.alchemy.com/gwei-calculator
 
 
+### Check-out official Docs for more info regarding Broker Configuration: [Official-docs](https://docs.beboundless.xyz/provers/broker#settings-in-brokertoml)
+
+---
+
+## Stop the `bento`
+
+>We will stop the `bento` to run the broker & applying config changes:
+
+```
+docker compose down
+```
+
+## Start The Broker🚀
+
+1. Inject `.env.base` 
+
+```
+source .env.base
+```
+
+2. Run Prover
+
+```
+just broker
+```
+
+>Running a broker with `just` will also start the `Bento` cluster through docker compose.
+
+3. Check logs
+
+>If u are doing in Local Pc then check your Docker Desktop that all 11 containers are running: 
+
+>Check the `Broker` containers Logs:
+
+* If cloud GPU then follow:
+
+```
+docker ps
+```
+
+* Broker Logs
+
+```
+just broker logs
+```
+
+Here we go🚀......You just have completed the Boundless prover Set-Up: 🥳
