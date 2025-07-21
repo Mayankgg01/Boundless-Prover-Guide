@@ -94,6 +94,9 @@ htop
 
 ```
 sudo apt update && sudo apt upgrade -y
+```
+
+```
 sudo apt install curl iptables build-essential git wget lz4 jq make gcc postgresql-client nano automake autoconf tmux htop nvme-cli libgbm1 pkg-config libssl-dev tar clang bsdmainutils ncdu unzip libleveldb-dev libclang-dev ninja-build -y
 ```
 
@@ -135,6 +138,9 @@ sudo ./scripts/setup.sh
 
 ```
 curl https://sh.rustup.rs -sSf | sh
+```
+
+```
 source $HOME/.cargo/env
 ```
 
@@ -156,6 +162,9 @@ cargo --version
 
 ```
 curl -L https://risczero.com/install | bash
+```
+
+```
 source ~/.bashrc
 ```
 
@@ -173,6 +182,9 @@ rzup install rust
 
 ```
 cargo install cargo-risczero
+```
+
+```
 rzup install cargo-risczero
 ```
 
@@ -187,7 +199,13 @@ rustup update
 
 ```
 cargo install --locked --git https://github.com/risc0/risc0 bento-client --branch release-2.1 --bin bento_cli
+```
+
+```
 echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.bashrc
+```
+
+```
 source ~/.bashrc
 ```
 
@@ -196,7 +214,13 @@ source ~/.bashrc
 
 ```
 cargo install --locked boundless-cli --version 0.12.1
+```
+
+```
 export PATH=$PATH:/root/.cargo/bin
+```
+
+```
 source ~/.bashrc
 ```
 
@@ -216,6 +240,10 @@ just --version
 ```
 
 ## Setup Environment Variables (Wallet & API)
+
+```
+cd boundless
+```
 
 ```
 sudo rm $HOME/boundless/.env.base
@@ -530,7 +558,7 @@ nano broker.toml
 >We will stop the `bento` to run the broker & applying config changes:
 
 ```
-docker compose down
+just bento down
 ```
 
 ## Start The Broker🚀
@@ -547,7 +575,7 @@ source .env.base
 just broker
 ```
 
->Running a broker with `just` will also start the `Bento` cluster through docker compose.
+>Running a broker with `just` will also start the `Bento`  through docker compose.
 
 3. Check logs
 
@@ -571,3 +599,6 @@ just broker logs
 
 
 Here we go🚀......You just have completed the Boundless prover Set-Up: 🥳
+
+
+
