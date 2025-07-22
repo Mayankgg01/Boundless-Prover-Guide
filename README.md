@@ -108,7 +108,7 @@ sudo apt install curl iptables build-essential git wget lz4 jq make gcc postgres
 git clone https://github.com/boundless-xyz/boundless
 ```
 ```
-cd boundless && git checkout v0.12.1 && git submodule update --init
+cd boundless && git checkout v0.13.0 && git submodule update --init
 ```
 
 ### Now We will install few more dependecies & CLI Tools
@@ -359,7 +359,11 @@ boundless account stake-balance
 
  >Bento: `Bento is the local proving infrastructure. Bento will take requests, prove them and return the result.`
 
-1. Here we will run bento & test it & benchmark our GPUs: 
+#### [Install Few images, If You are on 50 series card: (RTX 5080-5090 GPU)](https://github.com/Mayankgg01/Boundless-Prover-Guide/main/README.md#2%EF%B8%8F%E2%83%A3-install-few-images-if-you-are-on-50-series-card-rtx-5080-5090-gpu)
+
+* Do this above process before starting bento: only 50 series card holders:
+
+1. Here we will run bento & benchmark our GPUs: 
 
 ```
 just bento
@@ -372,22 +376,6 @@ just bento
 ```
 just bento logs
 ```
-
-3. Now we will Run a test proof
-
-```
-RUST_LOG=info bento_cli -c 1048
-```
-
->Now u have to check your GPU is utilizing well or now:
-
-* Run `htop` in new terminal tab: and monitor it
-
-* U can Increase `1048` to `2048/4096` if your gpu is not fully utilizing: 
-
-* You should see `Job Done!` if everything work well:
-
-<img width="1628" height="280" alt="image" src="https://github.com/user-attachments/assets/2f540601-f282-47e0-89c0-2ffc76e2f124" />
 
 
 ### Benchmarking Bento
@@ -425,7 +413,7 @@ boundless proving benchmark --request-ids {Order_ID}
 <img width="2559" height="454" alt="Screenshot 2025-07-19 184051" src="https://github.com/user-attachments/assets/df3e91fa-e62d-4d9b-a792-8a7f2b781167" />
 
 
-
+* You have to wait until it done: It can take time: Depends on your choosen `Cycles` in the Order: 
 
 ---
 
@@ -490,7 +478,7 @@ nano broker.toml
 
 * How to set:
 
->You alraedy test it and got your `peak_prove_khz` here: [Benchmarking Bento](https://github.com/Mayankgg01/Boundless-Prover-Guide/edit/main/README.md#benchmarking-bento)
+>You alraedy test it and got your `peak_prove_khz` here: [Benchmarking Bento](https://github.com/Mayankgg01/Boundless-Prover-Guide?tab=readme-ov-file#benchmarking-bento)
 
 * Edit your `peak_prove_khz` in `broker.toml`
 
@@ -599,6 +587,159 @@ just broker logs
 
 
 Here we go🚀......You just have completed the Boundless prover Set-Up: 🥳
+
+
+---
+
+
+<div align="center">
+
+#  🤔 **FAQ** ❔❔
+
+</div>
+
+
+## 1️⃣ Steps- how u could make changes in files after the node start: ?
+
+
+* If you have start the broker and want to change files like:  `.env.base` , `broker.toml` , `compose.yml` files: So you have to follow this step:
+
+#### 1. Stop & clean your broker:
+
+```
+just broker down
+just broker clean
+```
+
+#### 2. Open the file which you have to make changes: 
+
+ * >for  `.env.base`
+
+```
+nano .env.base
+```
+ 
+* >for `broker.toml`
+
+```
+nano broker.toml
+```
+
+* >for `compose.yml`
+
+```
+compose.yml
+```
+
+
+#### 3. Inject  `.env.base` into broker:
+
+* >You need to inject  `.env.base` every time when you are going to run Broker/Prover: cause it adds your RPC and Keys into broker:
+
+
+```
+source .env.base
+```
+
+
+#### 4. Start The Broker:
+
+* >Make sure your docker is running in Background:
+
+```
+just broker
+```
+
+---
+
+## 2️⃣ Install Few images, If You are on 50 series card: (RTX 5080-5090 GPU) 
+
+* >So if you have 50 series card: (GPU) then you have to do these steps:
+
+* Why? cause if u dont follow these steps and run directly then you would encounter with `gpu_prove_agent0` container issue:  
+
+#### 1. Stop BENTO if its running:
+
+```
+just bento down
+``` 
+
+#### 2. Clone and build RISC Zero agent from latest main:
+
+```
+cd $home
+git clone https://github.com/risc0/risc0.git
+```
+
+```
+cd risc0
+```
+
+>Docker should be running in background:
+
+```
+docker build -f bento/dockerfiles/agent.dockerfile \
+  -t local/risc0-bento-agent:sm120 \
+  --build-arg NVCC_APPEND_FLAGS="--generate-code arch=compute_120,code=sm_120" .
+```
+
+* This can take longer time to install: 
+
+#### 3. Add Build Image in `compose.yml` file 
+
+
+* >Move to boundless directory & open `compose.yml` file:
+
+
+```
+cd $home
+cd boundless 
+```
+
+```
+nano compose.yml
+```
+
+
+* Replace the agent image with `local/risc0-bento-agent:sm120` 
+
+* CHECK BELOW SCREENSHOT: Before & After
+
+<img width="3693" height="669" alt="image" src="https://github.com/user-attachments/assets/8fe62929-fbf9-4d47-bec6-6d1538362c03" />
+
+
+
+#### 4. Use latest bento_cli from main instead of release-2.1:
+
+```
+cargo install --locked \
+  --git https://github.com/risc0/risc0 \
+  --branch main \
+  --bin bento_cli
+```
+
+* If u got any error here then just ignore it:
+
+
+#### 5. Up your Bento
+
+```
+source .env.base
+```
+
+```
+just bento up 
+```
+
+#### 6.  All set: now You can `Benchmark` your Gpu: Follow From [Benchmarking Bento](https://github.com/Mayankgg01/Boundless-Prover-Guide?tab=readme-ov-file#benchmarking-bento)
+
+
+
+---
+
+
+## 3️⃣ How to start next day? (Local Pc Ony
+
 
 
 
