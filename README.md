@@ -86,7 +86,7 @@ htop
 
 >If u have Cloud GPU then follow: [Install Docker & Docker Compose](https://github.com/Mayankgg01/Aztec_Sequencer_Guide?tab=readme-ov-file#install-docker--docker-compose)
 
->#### Get Base Mainnet RPC Endpoint: [Alchemy](https://www.alchemy.com/) , The free one might work: U can make a try:
+>#### Get Base Mainnet RPC Endpoint: [Alchemy](https://www.alchemy.com/) , [Tenderly](https://dashboard.tenderly.co/) The free one might work: U can make a try:
 
 
 ### Install All Require Dependecies
@@ -358,8 +358,6 @@ boundless account stake-balance
 ## Run Bento & Benchmarking Bento
 
  >Bento: `Bento is the local proving infrastructure. Bento will take requests, prove them and return the result.`
-
-#### [Install Few images, If You are on 50 series card: (RTX 5080-5090 GPU)](https://github.com/Mayankgg01/Boundless-Prover-Guide/main/README.md#2%EF%B8%8F%E2%83%A3-install-few-images-if-you-are-on-50-series-card-rtx-5080-5090-gpu)
 
 * Do this above process before starting bento: only 50 series card holders:
 
@@ -654,92 +652,26 @@ just broker
 
 ## 2️⃣ Install Few images, If You are on 50 series card: (RTX 5080-5090 GPU) 
 
-* >So if you have 50 series card: (GPU) then you have to do these steps:
 
-* Why? cause if u dont follow these steps and run directly then you would encounter with `gpu_prove_agent0` container issue:  
-
-#### 1. Stop BENTO if its running:
-
-```
-just bento down
-``` 
-
-#### 2. Clone and build RISC Zero agent from latest main:
-
-```
-cd $home
-git clone https://github.com/risc0/risc0.git
-```
-
-```
-cd risc0
-```
-
->Docker should be running in background:
-
-```
-docker build -f bento/dockerfiles/agent.dockerfile \
-  -t local/risc0-bento-agent:sm120 \
-  --build-arg NVCC_APPEND_FLAGS="--generate-code arch=compute_120,code=sm_120" .
-```
-
-* This can take longer time to install: 
-
-#### 3. Add Build Image in `compose.yml` file 
-
-
-* >Move to boundless directory & open `compose.yml` file:
-
-
-```
-cd $home
-cd boundless 
-```
-
-```
-nano compose.yml
-```
-
-
-* Replace the agent image with `local/risc0-bento-agent:sm120` 
-
-* CHECK BELOW SCREENSHOT: Before & After
-
-<img width="3693" height="669" alt="image" src="https://github.com/user-attachments/assets/8fe62929-fbf9-4d47-bec6-6d1538362c03" />
-
-
-
-#### 4. Use latest bento_cli from main instead of release-2.1:
-
-```
-cargo install --locked \
-  --git https://github.com/risc0/risc0 \
-  --branch main \
-  --bin bento_cli
-```
-
-* If u got any error here then just ignore it:
-
-
-#### 5. Up your Bento
-
-```
-source .env.base
-```
-
-```
-just bento up 
-```
-
-#### 6.  All set: now You can `Benchmark` your Gpu: Follow From [Benchmarking Bento](https://github.com/Mayankgg01/Boundless-Prover-Guide?tab=readme-ov-file#benchmarking-bento)
-
+**  COMING SOON 🔜**
 
 
 ---
 
 
-## 3️⃣ How to start next day? (Local Pc Ony
+## 3️⃣ Know About the `Methods` 
+
+<img width="1280" height="663" alt="image" src="https://github.com/user-attachments/assets/171121fa-c37d-4bd1-883c-6c048f129f45" />
 
 
+* >Fullfilled Transaction  (Primary Prover) = `0x8e3b6945`
 
+
+* >Lock an Order Successfully = `0xb4206dd2`
+
+* >Complete the Order as Secondry prover = `0x2f13a90a`
+
+* What is secondry prover? 
+
+>If a prover has commited or lock a order but failed to submit on time then the prover will be slashed: So the slashed order which will be completed by other provers are called Secondry Prover: They can be more than one:
 
