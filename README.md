@@ -675,3 +675,38 @@ just broker
 
 >If a prover has commited or lock a order but failed to submit on time then the prover will be slashed: So the slashed order which will be completed by other provers are called Secondry Prover: They can be more than one:
 
+---
+
+## 4️⃣ Next Day Start Command: (Local Pc)
+
+#### 1. Move to boundless Directory
+
+```
+cd boundless
+```
+
+#### 2. Start Your docker desktop
+
+#### 3. Inject `.env.base` and `.env.broker` into broker
+
+
+```
+source .env.broker
+```
+
+```
+source .env.base
+```
+
+
+#### 4. Start your broker
+
+```
+just broker
+```
+
+>Check all containers are running or not: and monitor your Logs:
+
+Done✔️✔️
+
+
