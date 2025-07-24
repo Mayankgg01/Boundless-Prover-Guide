@@ -4,7 +4,7 @@
 
 </div>
 
-Boundless Prover is a key component of the Boundless protocol, a decentralized, cross‑chain marketplace for verifiable compute that leverages zero‑knowledge (ZK) proofs. Provers are powerful GPU‑equipped nodes that stake USDC, bid on compute requests via reverse‑Dutch auctions, and generate ZK proofs—verifiable attestations showing a computation was performed correctly. Developers submit tasks and offer rewards, then provers compete to win the job, lock stake, and deliver the proof before the deadline. This mechanism—Proof of Verifiable Work—ensures integrity and decentralization without requiring all nodes to re-execute code
+🍓Boundless Prover is a key component of the Boundless protocol, a decentralized, cross‑chain marketplace for verifiable compute that leverages zero‑knowledge (ZK) proofs. Provers are powerful GPU‑equipped nodes that stake USDC, bid on compute requests via reverse‑Dutch auctions, and generate ZK proofs—verifiable attestations showing a computation was performed correctly. Developers submit tasks and offer rewards, then provers compete to win the job, lock stake, and deliver the proof before the deadline. This mechanism—Proof of Verifiable Work—ensures integrity and decentralization without requiring all nodes to re-execute code
 
 
 <div align="left">
