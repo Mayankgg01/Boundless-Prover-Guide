@@ -547,6 +547,30 @@ nano broker.toml
 just bento down
 ```
 
+### Install `foundry` before running the broker
+
+* >It will prevent you from an Error which will come at building broker:
+
+```
+curl -L https://foundry.paradigm.xyz | bash -s -- --skip-confirm
+```
+
+```
+echo 'export PATH="$HOME/.foundry/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+```
+foundryup
+forge --version
+```
+
+```
+forge install Arachnid/solidity-stringutils
+```
+
+---
+
 ## Start The Broker🚀
 
 1. Inject `.env.base` 
