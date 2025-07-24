@@ -359,7 +359,6 @@ boundless account stake-balance
 
  >Bento: `Bento is the local proving infrastructure. Bento will take requests, prove them and return the result.`
 
-* Do this above process before starting bento: only 50 series card holders:
 
 1. Here we will run bento & benchmark our GPUs: 
 
