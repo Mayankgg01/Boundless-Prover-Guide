@@ -47,7 +47,7 @@ lookback_blocks = 100 # 300 blocks ~ 1 hour @ 12s block times
 # Requests that require a higher stake than this will not be considered.
 max_stake = "5" # USDC
 # Max input / image file size allowed for downloading from request URLs.
-max_file_size = 50_000_000
+max_file_size = 70_000_000
 # Max retries for fetching input / image contents from URLs
 #max_fetch_retries = 2
 # Max concurrent locks
