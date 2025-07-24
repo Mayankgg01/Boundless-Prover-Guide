@@ -675,6 +675,9 @@ just broker
 
 >If a prover has commited or lock a order but failed to submit on time then the prover will be slashed: So the slashed order which will be completed by other provers are called Secondry Prover: They can be more than one:
 
+❗❗Reward is not confirm for Secondry Provers
+
+* Explorer: https://basescan.org/address/
 ---
 
 ## 4️⃣ Next Day Start Command: (Local Pc)
