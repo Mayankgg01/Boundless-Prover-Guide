@@ -137,7 +137,7 @@ sudo ./scripts/setup.sh
 #### Rustup
 
 ```
-curl https://sh.rustup.rs -sSf | sh
+sudo curl https://sh.rustup.rs -sSf | sh
 ```
 
 ```
@@ -161,7 +161,7 @@ cargo --version
 #### rzup
 
 ```
-curl -L https://risczero.com/install | bash
+sudo curl -L https://risczero.com/install | bash
 ```
 
 ```
@@ -250,11 +250,11 @@ sudo rm $HOME/boundless/.env.base
 ```
 
 ```
-curl -o $HOME/boundless/.env.base https://raw.githubusercontent.com/Mayankgg01/Boundless-Prover-Guide/refs/heads/main/.env.base
+sudo curl -o $HOME/boundless/.env.base https://raw.githubusercontent.com/Mayankgg01/Boundless-Prover-Guide/refs/heads/main/.env.base
 ```
 
 ```
-nano $HOME/boundless/.env.base
+sudo nano $HOME/boundless/.env.base
 ```
 
 >Replace `Your_ENV_Wallet_PVT_Key_Without_0x` with your actual Wallet Pvt key: without 0x
@@ -277,7 +277,7 @@ source .env.base
 * Here You will config `mem_limit:` & `cpus`  in the `compose.yml` file according to Your Resources (GPU, Ram & CPU)
 
 ```
-nano compose.yml
+sudo nano compose.yml
 ```
 
 1. Now GO to `x-exec-agent-common: &exec-agent-common` section and change:
@@ -304,13 +304,13 @@ nano compose.yml
 * Firstly we will copy `.env.broker-template` into `.env.broker`
 
 ```
-cp .env.broker-template .env.broker
+sudo cp .env.broker-template .env.broker
 ```
 
 * Open it and set `Segment Size` According to your `VRAM` : As same as above step:
 
 ```
-nano .env.broker
+sudo nano .env.broker
 ```
 
 * ####  Inject it into broker make changes:
@@ -364,7 +364,7 @@ boundless account stake-balance
 1. Here we will run bento & benchmark our GPUs: 
 
 ```
-just bento
+sudo just bento
 ```
 
 * Make Sure your docker is running in Backgroud:
@@ -435,7 +435,7 @@ sudo wget https://raw.githubusercontent.com/Mayankgg01/Boundless-Prover-Guide/re
 2. Open `Broker.toml` 
 
 ```
-nano broker.toml
+sudo nano broker.toml
 ```
 
 >Now we will make Changes in it according to our system and resources: 
@@ -544,7 +544,7 @@ nano broker.toml
 >We will stop the `bento` to run the broker & applying config changes:
 
 ```
-just bento down
+sudo just bento down
 ```
 
 ### Install `foundry` before running the broker
@@ -552,7 +552,7 @@ just bento down
 * >It will prevent you from an Error which will come at building broker:
 
 ```
-curl -L https://foundry.paradigm.xyz | bash -s -- --skip-confirm
+sudo curl -L https://foundry.paradigm.xyz | bash -s -- --skip-confirm
 ```
 
 ```
@@ -582,7 +582,7 @@ source .env.base
 2. Run Prover
 
 ```
-just broker
+sudo just broker
 ```
 
 >Running a broker with `just` will also start the `Bento`  through docker compose.
@@ -629,8 +629,8 @@ Here we go🚀......You just have completed the Boundless prover Set-Up: 🥳
 #### 1. Stop & clean your broker:
 
 ```
-just broker down
-just broker clean
+sudo just broker down
+sudo just broker clean
 ```
 
 #### 2. Open the file which you have to make changes: 
@@ -638,19 +638,19 @@ just broker clean
  * >for  `.env.base`
 
 ```
-nano .env.base
+sudo nano .env.base
 ```
  
 * >for `broker.toml`
 
 ```
-nano broker.toml
+sudo nano broker.toml
 ```
 
 * >for `compose.yml`
 
 ```
-compose.yml
+sudo compose.yml
 ```
 
 
@@ -669,7 +669,7 @@ source .env.base
 * >Make sure your docker is running in Background:
 
 ```
-just broker
+sudo just broker
 ```
 
 ---
@@ -729,7 +729,7 @@ source .env.base
 #### 4. Start your broker
 
 ```
-just broker
+sudo just broker
 ```
 
 >Check all containers are running or not: and monitor your Logs:
