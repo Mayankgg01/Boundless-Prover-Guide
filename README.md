@@ -246,25 +246,21 @@ cd boundless
 ```
 
 ```
-sudo rm $HOME/boundless/.env.base
+sudo curl -o $HOME/boundless/.env https://raw.githubusercontent.com/Mayankgg01/Boundless-Prover-Guide/refs/heads/main/.env
 ```
 
 ```
-sudo curl -o $HOME/boundless/.env.base https://raw.githubusercontent.com/Mayankgg01/Boundless-Prover-Guide/refs/heads/main/.env.base
-```
-
-```
-sudo nano $HOME/boundless/.env.base
+sudo nano $HOME/boundless/.env
 ```
 
 >Replace `Your_ENV_Wallet_PVT_Key_Without_0x` with your actual Wallet Pvt key: without 0x
 
 >Replace `Your_RPC_URL` with your actual Base Mainnet RPC Endpoint, within " "
 
-* ####  Inject `.env.base` 
+* ####  Inject `.env` 
 
 ```
-source .env.base
+source .env
 ```
 
 ----To apply changes then You Have to run this command every time u start the prover 
@@ -328,10 +324,10 @@ source .env.broker
 
 >here we will deposit some base mainnet `$USDC` into Boundless marketplcae for staking purpose: and for locking orders. No minimum but you can do around 1-2$:
 
-1. Inject `.env.base` first:
+1. Inject `.env` first:
 
 ```
-source .env.base
+source .env
 ```
 
 2. Add boundless CLI into Path
@@ -381,10 +377,10 @@ just bento logs
 
 What is `peak_prove_khz` ? --This should correspond to the maximum number of cycles per second (in kHz) your proving backend can operate -
 
-* Inject `.env.base` first:
+* Inject `.env` first:
 
 ```
-source .env.base
+source .env
 ```
 
 * Benchmark
@@ -572,10 +568,10 @@ forge install Arachnid/solidity-stringutils
 
 ## Start The Broker🚀
 
-1. Inject `.env.base` 
+1. Inject `.env` 
 
 ```
-source .env.base
+source .env
 ```
 
 2. Run Prover
@@ -623,7 +619,7 @@ Here we go🚀......You just have completed the Boundless prover Set-Up: 🥳
 ## 1️⃣ Steps- how u could make changes in files after the node start: ?
 
 
-* If you have start the broker and want to change files like:  `.env.base` , `broker.toml` , `compose.yml` files: So you have to follow this step:
+* If you have start the broker and want to change files like:  `.env` , `broker.toml` , `compose.yml` files: So you have to follow this step:
 
 #### 1. Stop & clean your broker:
 
@@ -634,10 +630,10 @@ sudo just broker clean
 
 #### 2. Open the file which you have to make changes: 
 
- * >for  `.env.base`
+ * >for  `.env`
 
 ```
-sudo nano .env.base
+sudo nano .env
 ```
  
 * >for `broker.toml`
@@ -653,13 +649,13 @@ sudo compose.yml
 ```
 
 
-#### 3. Inject  `.env.base` into broker:
+#### 3. Inject  `.env` into broker:
 
-* >You need to inject  `.env.base` every time when you are going to run Broker/Prover: cause it adds your RPC and Keys into broker:
+* >You need to inject  `.env` every time when you are going to run Broker/Prover: cause it adds your RPC and Keys into broker:
 
 
 ```
-source .env.base
+source .env
 ```
 
 
@@ -713,7 +709,7 @@ cd boundless
 
 #### 2. Start Your docker desktop
 
-#### 3. Inject `.env.base` and `.env.broker` into broker
+#### 3. Inject `.env` and `.env.broker` into broker
 
 
 ```
@@ -721,7 +717,7 @@ source .env.broker
 ```
 
 ```
-source .env.base
+source .env
 ```
 
 
@@ -735,4 +731,51 @@ sudo just broker
 
 Done✔️✔️
 
+---
 
+## 5️⃣ Solution of Error: error: the following required arguments were not provided:  --rpc-url <RPC_URL>
+
+
+<img width="1280" height="256" alt="image_2025-07-25_19-02-36" src="https://github.com/user-attachments/assets/cd6053cf-038e-4260-a89e-e5462f1a944f" />
+
+
+>The cause of this error is that the env file is not getting inject into broker/bentro: or the docker compose file is set to use the `.env` instead of `.env.base`
+
+* Fix with these command:
+
+ #### 1. Down broker/bento
+
+```
+sudo just bento down
+```
+
+```
+sudo just broker down
+```
+
+#### 2. move .env.base into .env
+
+```
+mv .env.base .env
+```
+
+
+#### 3. Reload the bash
+
+```
+source .env
+```
+
+
+#### 4. Start bento/broker
+
+```
+sudo just bento 
+```
+
+```
+sudo just broker 
+```
+
+
+>Done: You wont see the error now:
