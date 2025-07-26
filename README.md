@@ -645,7 +645,7 @@ sudo nano broker.toml
 * >for `compose.yml`
 
 ```
-sudo compose.yml
+sudo nano compose.yml
 ```
 
 
