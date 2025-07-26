@@ -198,7 +198,7 @@ rustup update
 #### Bento-cli
 
 ```
-cargo install --locked --git https://github.com/risc0/risc0 bento-client --branch release-2.1 --bin bento_cli
+cargo install --locked --git https://github.com/risc0/risc0 bento-client --branch release-2.3 --bin bento_cli
 ```
 
 ```
@@ -213,7 +213,7 @@ source ~/.bashrc
 #### Boundless CLI
 
 ```
-cargo install --locked boundless-cli --version 0.12.1
+cargo install --locked boundless-cli 
 ```
 
 ```
