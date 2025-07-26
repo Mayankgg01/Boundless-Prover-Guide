@@ -322,7 +322,7 @@ source .env.broker
 
 ## Deposit & Stake Into Marketplace:
 
->here we will deposit some base mainnet `$USDC` into Boundless marketplcae for staking purpose: and for locking orders. No minimum but you can do around 1-2$:
+>here we will deposit some base mainnet `$USDC` into Boundless marketplcae for staking purpose: and for locking orders. No minimum but you can do around 5$:
 
 1. Inject `.env` first:
 
