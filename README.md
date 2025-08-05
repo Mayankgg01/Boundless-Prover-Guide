@@ -779,3 +779,43 @@ sudo just broker
 
 
 >Done: You wont see the error now:
+
+<div align="center">
+
+# 📈 Upgrade to Release v0.13.1
+
+</div>
+
+
+### 1.  Stop your prover is its running:
+
+```
+sudo just broker down
+```
+
+### 2. Move to boundless directory:
+
+```
+cd boundless
+```
+
+### 3. Pull the latest release 
+
+
+```
+git switch main
+git reset --hard
+git clean -fd
+git pull origin main
+```
+
+
+ >👉Note: This will discard all your current edits and get a clean copy: So you have to make your all changes in Config files again after the update: 
+
+### 4. Make sure to changes in configs if they got  discard after the update: 
+
+### 5. Start your prover:
+
+```
+sudo just broker
+```
