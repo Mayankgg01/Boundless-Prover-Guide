@@ -108,7 +108,7 @@ sudo apt install curl iptables build-essential git wget lz4 jq make gcc postgres
 git clone https://github.com/boundless-xyz/boundless
 ```
 ```
-cd boundless && git checkout v0.13.0 && git submodule update --init
+cd boundless && git checkout v0.13.1 && git submodule update --init
 ```
 
 ### Now We will install few more dependecies & CLI Tools
