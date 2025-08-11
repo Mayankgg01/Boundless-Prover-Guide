@@ -669,10 +669,127 @@ sudo just broker
 
 ---
 
-## 2️⃣ Install Few images, If You are on 50 series card: (RTX 5080-5090 GPU) 
+## 2️⃣ Solution Of 50 series GPU card: (RTX 5080-5090 GPU)
 
 
-**  COMING SOON 🔜**
+
+ >So if you have 50 series card: (GPU) then you have to do these steps:
+
+* Why? cause if u dont follow these steps and run directly then you would encounter with `gpu_prove_agent0` container issue:  
+
+#### 1. Stop BENTO if its running:
+
+```
+just bento down
+``` 
+
+#### 2. Download CUDA Toolkit 12.9 & Driver Installer
+
+[CUDA Toolkit 12.9 Downloads](https://developer.nvidia.com/cuda-12-9-0-download-archive?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=22.04&target_type=deb_network)
+
+* Open the above link & Run all these commands in your ubuntu to Install CUDA Toolkit Installer and Driver Installer
+
+#### 3. Clone and build RISC Zero agent from latest main:
+
+```
+cd $home
+git clone https://github.com/risc0/risc0.git
+```
+
+```
+cd risc0
+```
+
+* Open the `agent.dockerfile` 
+
+```
+sudo nano bento/dockerfiles/agent.dockerfile
+```
+
+Replace these: (2nd-3rd lines from the file)
+
+`ARG CUDA_IMG=nvidia/cuda:12.8.0-devel-ubuntu24.04`
+
+`ARG CUDA_RUNTIME_IMG=nvidia/cuda:12.8.0-runtime-ubuntu24.04`
+
+To this:
+
+```
+ARG CUDA_IMG=nvidia/cuda:12.9.0-devel-ubuntu22.04
+ARG CUDA_RUNTIME_IMG=nvidia/cuda:12.9.0-runtime-ubuntu22.04
+```
+
+>Save with `Ctrl` + `x` `y`
+
+>Docker should be running in background:
+
+```
+docker build --no-cache \
+  --file bento/dockerfiles/agent.dockerfile \
+  --build-arg CUDA_OPT_LEVEL=3 \
+  --build-arg NVCC_APPEND_FLAGS="\
+--generate-code arch=compute_75,code=sm_75 \
+--generate-code arch=compute_80,code=sm_80 \
+--generate-code arch=compute_86,code=sm_86 \
+--generate-code arch=compute_89,code=sm_89 \
+--generate-code arch=compute_120,code=sm_120" \
+  -t local/risc0-bento-agent:sm120-main \
+  .
+```
+
+* This can take longer time to install: 
+
+#### 4. Add Build Image in `compose.yml` file 
+
+
+* >Move to boundless directory & open `compose.yml` file:
+
+
+```
+cd $home
+cd boundless 
+```
+
+```
+nano compose.yml
+```
+
+
+* Replace the agent image with 
+
+```
+local/risc0-bento-agent:sm120-main
+```
+
+* CHECK BELOW SCREENSHOT: Before & After
+
+<img width="3693" height="669" alt="image" src="https://github.com/user-attachments/assets/8fe62929-fbf9-4d47-bec6-6d1538362c03" />
+
+#### 5. Change Cuda Version in `Compose.yml` file
+
+* So the default cuda version in this file is `cuda-12.2` You have to change this to `cuda-12.9`
+
+* You can see `cuda-12.2` 3 times in this file:   At Line 29, 159, 177
+
+Ex: `LD_LIBRARY_PATH: ${LD_LIBRARY_PATH:-/usr/local/cuda-12.2/compat/}`
+
+#### 6. Use latest bento_cli from main 
+
+```
+cargo install --locked \
+  --git https://github.com/risc0/risc0 \
+  --branch main \
+  --bin bento_cli
+```
+
+* If u got any error here then just ignore it:
+
+
+#### 7.  All set: now You have to follow from [Broker Configuration](https://github.com/Mayankgg01/Boundless-Prover-Guide?tab=readme-ov-file#broker-configuration) ::: 
+
+>So, the benchmarking of GPU won't work, idk why , tried all thinks but mlt able to find the solution:
+
+>So, Follow the video to understand it more: 
 
 
 ---
