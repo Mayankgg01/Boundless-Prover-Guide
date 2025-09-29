@@ -897,6 +897,36 @@ sudo just broker
 
 >Done: You wont see the error now:
 
+## 6️⃣ How to Un-stake usdc ?
+
+1. Move to directory
+
+```
+cd boundless
+```
+
+2. Check the staked Amount
+
+```
+source .env
+```
+
+```
+boundless account stake-balance
+```
+
+3. Withdraw staked Amount
+
+```
+boundless account withdraw-stake <AMOUNT>
+```
+
+* >Replace `<AMOUNT>` 
+
+Done✔️✔️
+
+---
+
 <div align="center">
 
 # 📈 Upgrade to Release v0.13.2
