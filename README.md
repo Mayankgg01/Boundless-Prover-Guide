@@ -897,7 +897,7 @@ sudo just broker
 
 >Done: You wont see the error now:
 
-## 6️⃣ How to Un-stake usdc ?
+## 6️⃣ How to Unstake usdc ?
 
 1. Move to directory
 
