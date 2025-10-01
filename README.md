@@ -923,6 +923,14 @@ boundless account withdraw-stake <AMOUNT>
 
 * >Replace `<AMOUNT>` 
 
+### If You have to change the key then change in `.env` file: 
+
+>Did with multiple wallet, then you can follow this: 
+
+```
+nano .env
+```
+
 Done✔️✔️
 
 ---
